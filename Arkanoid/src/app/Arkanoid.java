@@ -51,9 +51,6 @@ public class Arkanoid extends GraphicApplication {
 	private int stage2Blocks = 27;
 	private int stage3Blocks = 84;
 	
-	private String win = "YOU WIN!!";
-	
-	
 	@Override
 	protected void draw(Canvas canvas) {
 
@@ -87,7 +84,7 @@ public class Arkanoid extends GraphicApplication {
 	        
 	        if(stage3Blocks == 0){
 	        	
-	        	canvas.putText(5, 50, 50, win);
+	        	canvas.putText(5, 50, 50, "YOU WIN!!");
 	        	
 	        }
 	}

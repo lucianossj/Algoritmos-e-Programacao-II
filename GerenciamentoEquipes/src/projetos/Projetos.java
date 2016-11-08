@@ -89,7 +89,7 @@ public class Projetos {
 	public static void listaProjetos() throws IOException{
 		
 		mensagem("\n .:: Projetos ::.\n\n"
-				+ "Projeto | Data de Início | Data Final | Nº. de Competências | Competências\n\n");
+				+ "Projeto | Data de Início | Data Final | Nº. de Competências | Competências\n");
 				
 		for(int i = 0; i < vetores.projetos.length; i++){
 			

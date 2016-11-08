@@ -42,13 +42,16 @@ public class Main {
 	
 	static int opcao = 0;
 	
+	static VetorProjeto projetos = new VetorProjeto();
+	
 	public static void main(String[] args) throws IOException {
 
+		leituraArquivo();
 		menuInicial();
 		
 	}
 
-	public static void menuInicial() throws IOException{
+	static void leituraArquivo() throws IOException{
 		
 		mensagem("\n .:: Gerenciamento de Equipes ::.\n\n"
 				+ ".:: Funcionários\n\n"
@@ -79,6 +82,10 @@ public class Main {
 			
 		}
 		
+	}
+	
+	public static void menuInicial() throws IOException{
+		
 		mensagem("\n\n .:: Gerenciamento de Equipes ::. \n\n"
 				+ " 1 - Projetos\n"
 				+ " 2 - Funcionários\n"
@@ -88,7 +95,7 @@ public class Main {
 		escolheOpcao();
 		
 	}
-		
+	
 	public void runFuncionario() throws FileNotFoundException{
 		
 		Parser<Funcionario> parser = new ParserFuncionario();
@@ -98,20 +105,14 @@ public class Main {
 		csvFuncionario = new CSVFile<>("src/funcionarios/funcionarios.csv", parser);
 		
 		Funcionario funcionario = null;
-		
-		Vetores  vetores = new Vetores();
-		int cont = 0;
-		
+				
 		do {
 			
 			funcionario = csvFuncionario.readObject();
 			
 			if(funcionario != null){
-				
-				vetores.funcionarios = vetores.aumentaVetorFuncionarios(vetores.funcionarios);
-				vetores.funcionarios[cont] = funcionario;
-				
-				cont = cont + 1;
+
+				projetos.append(projeto);
 				
 			}
 			
@@ -134,8 +135,7 @@ public class Main {
 		csvProjeto = new CSVFile<>("src/projetos/projetos.csv", parser);
 		
 		Projeto projeto = null;
-
-		Vetores  vetores = new Vetores();
+		
 		int cont = 0;
 		
 		do {

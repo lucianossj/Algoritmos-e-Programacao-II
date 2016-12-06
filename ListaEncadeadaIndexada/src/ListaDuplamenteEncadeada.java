@@ -4,17 +4,17 @@ public class ListaDuplamenteEncadeada<T> {
 	private class Node {
 		
 		private T data;
-		private Node next;
-		private Node previous;
+		private Node proximo;
+		private Node anterior;
 		
-		private Node next50;
-		private Node previous50;
+		private Node pulaProximo50;
+		private Node pulaAnterior50;
 		
-		private Node next100;
-		private Node previous100;
+		private Node pulaProximo100;
+		private Node pulaAnterior100;
 		
-		private Node next1000;
-		private Node previous1000;
+		private Node pulaProximo1000;
+		private Node pulaAnterior1000;
 		
 		public Node(T value) {
 			
@@ -42,16 +42,16 @@ public class ListaDuplamenteEncadeada<T> {
 		
 		if (tail != null){
 			
-			if(head.next==null){
+			if(head.proximo==null){
 				
-				head.next = novo;
+				head.proximo = novo;
 				tail = novo;
-				tail.previous=head;
+				tail.anterior=head;
 				
 			}else{
 				
-				novo.previous=tail;
-				tail.next = novo;
+				novo.anterior=tail;
+				tail.proximo = novo;
 				tail = novo;
 				
 			}
@@ -73,9 +73,9 @@ public class ListaDuplamenteEncadeada<T> {
 		
 		Node current = head;
 		
-		node50.next50 = tail;
-		node100.next100 = tail;
-		node1000.next1000 = tail;
+		node50.pulaProximo50 = tail;
+		node100.pulaProximo100 = tail;
+		node1000.pulaProximo1000 = tail;
 		
 		int cont = 1;
 		
@@ -83,9 +83,9 @@ public class ListaDuplamenteEncadeada<T> {
 			
 			if((cont % 25) == 0){
 				
-				node50.next50 = current;
-				current.previous50 = node50;
-				current.next50 = tail;
+				node50.pulaProximo50 = current;
+				current.pulaAnterior50 = node50;
+				current.pulaProximo50 = tail;
 				
 				node50 = current;
 				
@@ -93,9 +93,9 @@ public class ListaDuplamenteEncadeada<T> {
 			
 			if((cont % 100) == 0){
 				
-				node100.next100 = current;
-				current.previous100 = node100;
-				current.next100 = tail;
+				node100.pulaProximo100 = current;
+				current.pulaAnterior100 = node100;
+				current.pulaProximo100 = tail;
 				
 				node100 = current;
 				
@@ -103,30 +103,30 @@ public class ListaDuplamenteEncadeada<T> {
 			
 			if((cont % 1000) == 0){
 				
-				node1000.next1000 = current;
-				current.previous1000 = node1000;
-				current.next1000 = tail;
+				node1000.pulaProximo1000 = current;
+				current.pulaAnterior1000 = node1000;
+				current.pulaProximo1000 = tail;
 				
 				node1000 = current;
 				
 			}
 			
-			current = current.next;
+			current = current.proximo;
 			cont++;
 			
 		}
 		
-		if(tail.previous50 == null)
+		if(tail.pulaAnterior50 == null)
 			
-			tail.previous50 = node50;
+			tail.pulaAnterior50 = node50;
 		
-		if(tail.previous100 == null)
+		if(tail.pulaAnterior100 == null)
 			
-			tail.previous100 = node100;
+			tail.pulaAnterior100 = node100;
 		
-		if(tail.previous1000 == null)
+		if(tail.pulaAnterior1000 == null)
 			
-			tail.previous1000 = node1000;
+			tail.pulaAnterior1000 = node1000;
 		
 	}
 	
@@ -137,9 +137,56 @@ public class ListaDuplamenteEncadeada<T> {
         while (current != null) {
         	
             System.out.println((current.getData()));
-            current = current.next;
+            current = current.proximo;
             
         }
+        
+    }
+	
+	public void pesquisa(int elemento) {
+		
+		Node current = head;
+        boolean found = false;
+        int quantNodes = 0;      
+
+		while (current != null) {
+            
+            if ((Integer) current.getData() != elemento) {
+            	
+            	quantNodes++;
+            	
+            	if ((current.pulaProximo1000 != null) && ((Integer)current.pulaProximo1000.data <= elemento)) {
+            		
+                	current = current.pulaProximo1000;
+                	
+            	} else if ((current.pulaProximo100 != null) && ((Integer)current.pulaProximo100.data <= elemento)) {
+            		
+                	current = current.pulaProximo100;
+                	
+            	} else if ((current.pulaProximo50 != null) && ((Integer)current.pulaProximo50.data <= elemento)) {
+            		
+            		current = current.pulaProximo50;
+            		
+        		} else {
+        			
+                	current = current.proximo;
+                	
+            	}
+            	
+            } else {
+            	
+            	found = true;
+                break;
+                
+            }   
+            
+        }		                 
+		
+        if (found) {
+        	
+        	Main.mensagem("\nQuantidade de nodes percorridos: "+ quantNodes +"\n");
+        	
+    	}   
         
     }
 	

@@ -23,14 +23,19 @@ public class Main {
 		
 		mensagem(menu);
 		
-		escolheOpcao(opcao("Escolha uma opção: "));
+		escolheOpcao(capturaInteiro("Escolha uma opção: "));
 		
 		menu();
 		
 	}
 	
-	
-	static void pesquisa(){}
+	static void pesquisa(){
+		
+		int elementoPesquisa = capturaInteiro("\nQue elemento deseja procurar? ");
+		
+		lista.pesquisa(elementoPesquisa);
+		
+	}
 	
 	static void escolheOpcao(int opcao){
 		
@@ -58,13 +63,13 @@ public class Main {
 		
 	}
 	
-	static int opcao(String mensagem){
+	static int capturaInteiro(String mensagem){
 		
 		System.out.print(mensagem);
 		
-		int opcao = scan.nextInt();
+		int numero = scan.nextInt();
 		
-		return opcao;
+		return numero;
 		
 	}
 	

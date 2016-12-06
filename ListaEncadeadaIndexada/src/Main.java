@@ -23,7 +23,14 @@ public class Main {
 		
 	}
 	
-	static void carregaLista(){}
+	static void carregaLista(){
+		
+		ListaDuplamenteEncadeada<Integer> lista = new ListaDuplamenteEncadeada<>();
+		for (int i = 0; i <= 15000; i++) {
+			lista.append(i);
+		}
+		
+	}
 	static void mostraLista(){}
 	static void pesquisa(){}
 	

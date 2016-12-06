@@ -5,6 +5,8 @@ public class Main {
 
 	static Scanner scan = new Scanner(System.in);
 	
+	static ListaDuplamenteEncadeada<Integer> lista = new ListaDuplamenteEncadeada<>();
+	
 	public static void main(String[] args) {
 
 		menu();
@@ -19,19 +21,15 @@ public class Main {
 				+ "3 - Pesquisar dado\n"
 				+ "4 - Sair\n\n";
 		
+		mensagem(menu);
+		
 		escolheOpcao(opcao("Escolha uma opção: "));
+		
+		menu();
 		
 	}
 	
-	static void carregaLista(){
-		
-		ListaDuplamenteEncadeada<Integer> lista = new ListaDuplamenteEncadeada<>();
-		for (int i = 0; i <= 15000; i++) {
-			lista.append(i);
-		}
-		
-	}
-	static void mostraLista(){}
+	
 	static void pesquisa(){}
 	
 	static void escolheOpcao(int opcao){
@@ -52,7 +50,7 @@ public class Main {
 			
 			System.exit(0);
 			
-		}else{
+		} else {
 			
 			mensagem("\n\nOpção inválida!! Por favor, tente novamente!!\n\n");
 			
@@ -73,6 +71,22 @@ public class Main {
 	static void mensagem(String mensagem){
 			
 		System.out.print(mensagem);
+		
+	}
+	
+	static void carregaLista(){
+		
+		for (int i = 0; i <= 15000; i++) {
+			lista.append(i);
+		}
+		
+		lista.lista2();
+		
+	}
+	
+	static void mostraLista(){
+		
+		lista.mostraLista();
 		
 	}
 	

@@ -1,3 +1,21 @@
+/*
+ * Trabalho Final - Lista Duplamente Encadeada e Indexada - Algoritmos de Programação II
+ * 
+ * Luciano da Silva Santos Junior
+ * 06/12/2016 
+ * 
+ * GitHub:
+ * https://github.com/lucianossj/Algoritmos-e-Programacao-II
+ * 
+ * */
+
+/*Lista Indexada
+==============
+
+O objetivo desta aplicação é acelerar o processo de procura de um elemento em uma lista encadeada. Para isso, você deve modificar a lista duplamente encadeada de forma que seja possível inserir os dados de forma ordenada na estrutura, e que seja possível criar "pulos" entre os elementos da lista.
+
+A implementação desta lista pode ser realizada com o uso de várias listas encadeadas (uma para cada nível), ou modificando os nós da lista, armazenando apontadores extras nesses nós.*/
+
 
 import java.util.Scanner;
 
@@ -29,14 +47,6 @@ public class Main {
 		
 	}
 	
-	static void pesquisa(){
-		
-		int elementoPesquisa = capturaInteiro("\nQue elemento deseja procurar? ");
-		
-		lista.pesquisa(elementoPesquisa);
-		
-	}
-	
 	static void escolheOpcao(int opcao){
 		
 		if(opcao == 1){
@@ -63,22 +73,6 @@ public class Main {
 		
 	}
 	
-	static int capturaInteiro(String mensagem){
-		
-		System.out.print(mensagem);
-		
-		int numero = scan.nextInt();
-		
-		return numero;
-		
-	}
-	
-	static void mensagem(String mensagem){
-			
-		System.out.print(mensagem);
-		
-	}
-	
 	static void carregaLista(){
 		
 		for (int i = 0; i <= 15000; i++) {
@@ -92,6 +86,30 @@ public class Main {
 	static void mostraLista(){
 		
 		lista.mostraLista();
+		
+	}
+	
+	static void pesquisa(){
+		
+		int elementoPesquisa = capturaInteiro("\nQue elemento deseja procurar? ");
+		
+		lista.pesquisa(elementoPesquisa);
+		
+	}
+	
+	static int capturaInteiro(String mensagem){
+		
+		System.out.print(mensagem);
+		
+		int numero = scan.nextInt();
+		
+		return numero;
+		
+	}
+	
+	static void mensagem(String mensagem){
+			
+		System.out.print(mensagem);
 		
 	}
 	
